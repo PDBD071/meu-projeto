@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        // Criação de um autor
+        Publicavel autor = new UsuarioDecorator(new Autor());
+
+        // Definindo a estratégia de publicação como "Livro"
+        Publicavel estrategiaLivro = new EstrategiaPublicacaoLivro();
+        ((UsuarioDecorator) autor).setEstrategiaPublicacao(estrategiaLivro);
+        autor.publicar(); // Output: Publicando um livro...
+
+        // Alterando a estratégia para "Artigo"
+        Publicavel estrategiaArtigo = new EstrategiaPublicacaoArtigo();
+        ((UsuarioDecorator) autor).setEstrategiaPublicacao(estrategiaArtigo);
+        autor.publicar(); // Output: Publicando um artigo...
+    }
+}
